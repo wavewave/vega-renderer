@@ -4,7 +4,10 @@ with pkgs;
 
 let
 
-  hsenv = haskellPackages.ghcWithPackages (p: with p; [ cabal-install ]);
+  hsenv = haskellPackages.ghcWithPackages (p: with p; [
+    cabal-install
+    lens
+  ]);
 
 in
 
