@@ -3,6 +3,7 @@
 module Graphics.Vega.Render where
 
 import Control.Lens (makeLenses)
+import Data.Map (Map)
 import Data.Text (Text)
 import Data.Tree (Tree)
 
@@ -10,7 +11,7 @@ data Group = Group
 
 data Clip = Clip
 
-data MarkType = MarkType
+-- data MarkType = MarkType
 
 data Role = Role
 
@@ -30,15 +31,15 @@ data Item = Item {
 
 
 data Mark = Mark {
-    _markBounds      :: Bounds
-  , _markClip        :: Clip
-  , _markGroup       :: Group
-  , _markInteractive :: Bool
+    _markBounds      :: Maybe Bounds
+  , _markClip        :: Maybe Clip
+  , _markGroup       :: Maybe Group
+  , _markInteractive :: Maybe Bool
   , _markItems       :: [Item]
-  , _markType        :: MarkType
+  , _markType        :: Text -- MarkType
   , _markName        :: Text
-  , _markRole        :: Role
-  , _markZindex      :: Int
+  , _markRole        :: Maybe Role
+  , _markZindex      :: Maybe Int
   }
 
 
@@ -49,6 +50,6 @@ makeLenses ''Mark
 makeLenses ''Item
 
 
-type SceneGraph = Tree Item
+type SceneGraph = Map Text Mark -- Tree Item
 
 

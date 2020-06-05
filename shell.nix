@@ -6,6 +6,8 @@ let
 
   hsenv = haskellPackages.ghcWithPackages (p: with p; [
     cabal-install
+    aeson
+    aeson-pretty
     lens
   ]);
 
